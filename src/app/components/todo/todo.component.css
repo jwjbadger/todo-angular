@@ -1,0 +1,9 @@
+.complete {
+  background-color: #b3ffec;
+}
+.incomplete {
+  background-color: #ffb3b3;
+}
+.toast {
+  margin: 5px;
+}

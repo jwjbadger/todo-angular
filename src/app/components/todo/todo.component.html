@@ -1,7 +1,10 @@
-<h2>{{ todo.title }}</h2>
-<p>{{ todo?.description }}</p>
-<p>
-  {{
-    todo.completed ? "You have finished this" : "You still have to work on this"
-  }}
-</p>
+<ngb-toast
+  class="{{ todo.completed ? 'complete' : 'incomplete' }}"
+  [autohide]="false"
+>
+  <h5>{{ todo.title }}</h5>
+  <hr />
+  <p>
+    <i>{{ todo?.description }}</i>
+  </p>
+</ngb-toast>
