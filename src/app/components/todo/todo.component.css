@@ -1,8 +1,16 @@
 .complete {
-  background-color: #b3ffec;
+  /* background-color: #b3ffec; */
+  /* background-color: #cae9e0; */
+  background-color: #1aa6b7;
+  /* background-color: #cbe3ca; */
+  /* background-color: #567db0; */
 }
 .incomplete {
-  background-color: #ffb3b3;
+  /* background-color: #ffb3b3; */
+  /* background-color: #7dc8ca; */
+  background-color: #f56a79;
+  /* background-color: #f2d3ce; */
+  /* background-color: #83a4b6; */
 }
 .toast {
   margin: 5px;

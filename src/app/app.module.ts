@@ -7,9 +7,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { TodosComponent } from './components/todos/todos.component';
 import { TodoComponent } from './components/todo/todo.component';
+import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 
 @NgModule({
-  declarations: [AppComponent, TodosComponent, TodoComponent],
+  declarations: [
+    AppComponent,
+    TodosComponent,
+    TodoComponent,
+    ContextMenuComponent,
+  ],
   imports: [NgbModule, BrowserModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

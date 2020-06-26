@@ -1,6 +1,7 @@
 <ngb-toast
   class="{{ todo.completed ? 'complete' : 'incomplete' }}"
   [autohide]="false"
+  (contextmenu)="toggleMenu($event)"
 >
   <h5>{{ todo.title }}</h5>
   <hr />
@@ -8,3 +9,11 @@
     <i>{{ todo?.description }}</i>
   </p>
 </ngb-toast>
+<app-context-menu
+  *ngIf="!isHidden"
+  [x]="xPosTabMenu"
+  [y]="yPosTabMenu"
+  [complete]="todo.completed"
+  (mouseleave)="hideMenu()"
+  (left)="hideMenu()"
+></app-context-menu>

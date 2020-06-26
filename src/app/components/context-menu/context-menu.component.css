@@ -1,0 +1,52 @@
+.menu {
+  position: absolute;
+  z-index: 5;
+  /* background-color: #fff; */
+  /* background-color: #cecbd6; */
+  background-color: #d9ecf2;
+  /* background-color: #efe2ec; */
+  /* background-color: #f6efed; */
+  padding: 5px;
+  border-radius: 1rem;
+  margin: 0px;
+}
+.btn-group {
+  display: block;
+  margin: 0px;
+}
+label {
+  display: block;
+  border-radius: 0.75rem !important;
+  border: 0px;
+  margin-top: 5px;
+}
+.danger {
+  /* background-color: #e96363; */
+  /* background-color: #f3b8b1; */
+  background-color: #ff414d !important;
+  /* background-color: #f2d3ce; */
+  /* background-color: #ec505d; */
+}
+.complete {
+  /* background-color: #b3ffec; */
+  /* background-color: #cae9e0; */
+  background-color: #1aa6b7 !important;
+  /* background-color: #cbe3ca; */
+  /* background-color: #567db0; */
+  margin-top: 0px;
+}
+.incomplete {
+  /* background-color: #ffb3b3; */
+  /* background-color: #7dc8ca; */
+  background-color: #f56a79 !important;
+  /* background-color: #f2d3ce; */
+  /* background-color: #83a4b6; */
+  margin-top: 0px;
+}
+.edit {
+  /* background-color: #4da3ff; */
+  /* background-color: #f3d2ac; */
+  background-color: #1aa6b7 !important;
+  /* background-color: #b2d8e9; */
+  /* background-color: #344c6c; */
+}

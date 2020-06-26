@@ -1,0 +1,26 @@
+<form
+  class="menu"
+  [ngStyle]="{ 'left.px': x, 'top.px': y }"
+  formGroup="radioGroupForm"
+>
+  <div
+    class="btn-group btn-group-toggle"
+    ngbRadioGroup
+    name="radioBasic"
+    formControlName="model"
+  >
+    <label
+      ngbButtonLabel
+      [class]="complete ? 'btn-primary incomplete' : 'btn-primary complete'"
+    >
+      <input ngbButton type="radio" />
+      {{ complete ? "Re-Open" : "Finish" }}
+    </label>
+    <label ngbButtonLabel class="btn-primary edit">
+      <input ngbButton type="radio" /> Edit
+    </label>
+    <label ngbButtonLabel class="btn-primary danger">
+      <input ngbButton type="radio" /> Delete
+    </label>
+  </div>
+</form>
