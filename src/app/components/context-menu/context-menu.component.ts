@@ -11,11 +11,15 @@ export class ContextMenuComponent implements OnInit {
   @Input() complete = false;
 
   @Output() left = new EventEmitter<string>();
+  @Output() action = new EventEmitter<string>();
 
   constructor() {}
 
   hideMenu() {
     this.left.emit('left');
+  }
+  pushAction(action: string) {
+    this.action.emit(action);
   }
 
   ngOnInit() {}

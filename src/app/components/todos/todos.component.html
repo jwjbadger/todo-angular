@@ -1,3 +1,8 @@
 <div>
-  <app-todo *ngFor="let todo of todos" [todo]="todo"></app-todo>
+  <app-todo
+    *ngFor="let todo of todos"
+    [todo]="todo"
+    [user]="user"
+    [index]="todos.indexOf(todo)"
+  ></app-todo>
 </div>

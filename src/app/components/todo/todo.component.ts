@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Todo } from '../../models/todo-item.model';
-
+import { User } from '../../models/user.model';
 import { TodoService } from '../../services/todo-service';
 
 @Component({
@@ -10,6 +10,8 @@ import { TodoService } from '../../services/todo-service';
 })
 export class TodoComponent implements OnInit {
   @Input() todo: Todo;
+  @Input() user: User;
+  @Input() index: number;
 
   constructor(private todoService: TodoService) {}
 
@@ -21,6 +23,21 @@ export class TodoComponent implements OnInit {
 
   hideMenu() {
     this.isHidden = true;
+  }
+
+  handleAction(event: string) {
+    this.hideMenu();
+    switch (event) {
+      case 'toggleComplete':
+        this.todo.completed = !this.todo.completed;
+        this.user.todos[this.index] = this.todo;
+        this.todoService.patch(this.user).subscribe();
+        break;
+      case 'edit':
+        break;
+      case 'delete':
+        break;
+    }
   }
 
   toggleMenu(event: MouseEvent) {

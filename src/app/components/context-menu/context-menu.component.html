@@ -13,14 +13,16 @@
       ngbButtonLabel
       [class]="complete ? 'btn-primary incomplete' : 'btn-primary complete'"
     >
-      <input ngbButton type="radio" />
+      <input ngbButton type="radio" (click)="pushAction('toggleComplete')" />
       {{ complete ? "Re-Open" : "Finish" }}
     </label>
     <label ngbButtonLabel class="btn-primary edit">
-      <input ngbButton type="radio" /> Edit
+      <input ngbButton type="radio" (click)="pushAction('edit')" />
+      Edit
     </label>
     <label ngbButtonLabel class="btn-primary danger">
-      <input ngbButton type="radio" /> Delete
+      <input ngbButton type="radio" (click)="pushAction('delete')" />
+      Delete
     </label>
   </div>
 </form>
