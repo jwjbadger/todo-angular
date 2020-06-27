@@ -1,0 +1,35 @@
+<div class="d-flex">
+  <ul
+    ngbNav
+    #nav="ngbNav"
+    [(activeId)]="active"
+    class="nav-pills"
+    orientation="vertical"
+    [destroyOnHide]="false"
+  >
+    <li ngbNavItem="tasks">
+      <a ngbNavLink>Tasks</a>
+      <ng-template ngbNavContent>
+        <app-todos></app-todos>
+      </ng-template>
+    </li>
+    <li ngbNavItem="projects">
+      <a ngbNavLink>Projects</a>
+      <ng-template ngbNavContent>
+        <p>
+          Projects hasn't been implemented yet....
+        </p>
+      </ng-template>
+    </li>
+    <li ngbNavItem="settings">
+      <a ngbNavLink>Settings</a>
+      <ng-template ngbNavContent>
+        <p>
+          Settings hasn't been implemented yet....
+        </p>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="ml-4"></div>
+</div>

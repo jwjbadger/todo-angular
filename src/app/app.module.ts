@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { TodosComponent } from './components/todos/todos.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ContextMenuComponent } from './components/context-menu/context-menu.com
     TodosComponent,
     TodoComponent,
     ContextMenuComponent,
+    SidebarComponent,
   ],
   imports: [NgbModule, BrowserModule, HttpClientModule],
   providers: [],

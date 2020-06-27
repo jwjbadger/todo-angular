@@ -31,8 +31,11 @@ export class TodoComponent implements OnInit {
     this.hideMenu();
     switch (event) {
       case 'toggleComplete':
-        this.todo.completed = !this.todo.completed;
-        this.user.todos[this.index] = this.todo;
+        let todos = this.user.todos;
+        todos[this.index].completed = !todos[this.index].completed;
+        todos.push(todos[this.index]);
+        todos.splice(this.index, 1);
+
         this.todoService.patch(this.user).subscribe();
         break;
       case 'edit':
