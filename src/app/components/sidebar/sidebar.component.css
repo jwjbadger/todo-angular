@@ -2,6 +2,7 @@ ul {
   background-color: #002d40;
   padding: 10px;
   border-radius: 0rem 1rem 1rem 0rem;
+  min-height: 100vh;
 }
 .nav-pills .nav-link.active {
   background-color: #1aa6b7;

@@ -28,6 +28,9 @@ export class TodosComponent implements OnInit {
       completed: false,
     };
     this.user.todos.push(newTodo);
+    this.user.todos.sort(
+      (a, b) => (a.completed ? 1 : 0) - (b.completed ? 1 : 0)
+    );
     this.todoService.patch(this.user).subscribe();
   }
 }
