@@ -1,5 +1,6 @@
 div {
   display: flex;
+  flex-wrap: wrap;
 }
 .incomplete {
   /* background-color: #ffb3b3; */
@@ -16,6 +17,7 @@ input {
   border-width: 0px;
   border-radius: 0.4rem;
   color: #1c1717;
+  height: inherit;
 }
 .btn-primary {
   background-color: #1aa6b7 !important;
@@ -23,6 +25,7 @@ input {
   justify-content: center;
   align-items: center;
   display: flex;
+  height: inherit;
 }
 .toast {
   margin: 5px;
@@ -35,6 +38,7 @@ input {
 }
 .btn-group {
   margin-left: 5px;
+  height: inherit;
 }
 ::-webkit-input-placeholder {
   font-style: italic;
