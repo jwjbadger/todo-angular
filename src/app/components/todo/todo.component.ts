@@ -36,6 +36,8 @@ export class TodoComponent implements OnInit {
       case 'edit':
         break;
       case 'delete':
+        this.user.todos.splice(this.index, 1);
+        this.todoService.patch(this.user).subscribe();
         break;
     }
   }
