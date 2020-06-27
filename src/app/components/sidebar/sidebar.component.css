@@ -3,3 +3,10 @@ ul {
   padding: 10px;
   border-radius: 0rem 1rem 1rem 0rem;
 }
+.nav-pills .nav-link.active {
+  background-color: #1aa6b7;
+  color: #d9ecf2;
+}
+a {
+  color: #1aa6b7;
+}
