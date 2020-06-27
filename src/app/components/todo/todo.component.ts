@@ -19,6 +19,8 @@ export class TodoComponent implements OnInit {
   xPosTabMenu: Number;
   yPosTabMenu: Number;
 
+  inputEnabled: Boolean = false;
+
   ngOnInit(): void {}
 
   hideMenu() {
@@ -34,12 +36,20 @@ export class TodoComponent implements OnInit {
         this.todoService.patch(this.user).subscribe();
         break;
       case 'edit':
+        this.inputEnabled = true;
         break;
       case 'delete':
         this.user.todos.splice(this.index, 1);
         this.todoService.patch(this.user).subscribe();
         break;
     }
+  }
+
+  finishEdit(title: string, description: string) {
+    this.inputEnabled = false;
+    this.user.todos[this.index].title = title;
+    this.user.todos[this.index].description = description;
+    this.todoService.patch(this.user).subscribe();
   }
 
   toggleMenu(event: MouseEvent) {

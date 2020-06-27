@@ -6,7 +6,7 @@
     [index]="todos.indexOf(todo)"
   ></app-todo>
   <ngb-toast class="{{ 'incomplete' }}" [autohide]="false">
-    <input #title class="head" placeholder="Task Title" />
+    <h5><input #title class="head" placeholder="Task Title" /></h5>
     <hr />
     <div class="creation">
       <input #description class="description" placeholder="Task description" />
@@ -16,7 +16,11 @@
             ngbButton
             type="radio"
             value="middle"
-            (click)="createNew(title.value, description.value)"
+            (click)="
+              createNew(title.value, description.value);
+              title.value = '';
+              description.value = ''
+            "
           />
           Add
         </label>

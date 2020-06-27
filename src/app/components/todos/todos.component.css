@@ -8,14 +8,21 @@ div {
   /* background-color: #f2d3ce; */
   /* background-color: #83a4b6; */
 }
+.creation {
+  height: 22px;
+}
 input {
   background-color: #f78893;
   border-width: 0px;
   border-radius: 0.4rem;
+  color: #1c1717;
 }
 .btn-primary {
   background-color: #1aa6b7 !important;
   border-color: #1aa6b7 !important;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 .toast {
   margin: 5px;

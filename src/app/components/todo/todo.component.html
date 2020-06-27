@@ -3,11 +3,36 @@
   [autohide]="false"
   (contextmenu)="toggleMenu($event)"
 >
-  <h5>{{ todo.title }}</h5>
+  <h5>
+    <input
+      #title
+      class="{{ todo.completed ? 'title complete' : 'title incomplete' }}"
+      [value]="todo.title"
+      [disabled]="!inputEnabled"
+    />
+  </h5>
   <hr />
-  <p>
-    <i>{{ todo?.description }}</i>
-  </p>
+  <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
+    <input
+      #description
+      class="{{
+        todo.completed ? 'description complete' : 'description incomplete'
+      }}"
+      [value]="todo.description"
+      [disabled]="!inputEnabled"
+    />
+    <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
+      <label *ngIf="inputEnabled" ngbButtonLabel class="btn-primary">
+        <input
+          ngbButton
+          type="radio"
+          value="middle"
+          (click)="finishEdit(title.value, description.value)"
+        />
+        Done
+      </label>
+    </div>
+  </div>
 </ngb-toast>
 <app-context-menu
   *ngIf="!isHidden"

@@ -12,6 +12,34 @@
   /* background-color: #f2d3ce; */
   /* background-color: #83a4b6; */
 }
+input {
+  border-width: 0px;
+  border-radius: 0.4rem;
+  color: #1c1717;
+}
+.title {
+  font-weight: bold;
+}
+.description {
+  font-style: italic;
+}
+input:enabled {
+  background-color: #f78893;
+}
+.btn-group {
+  height: 22px;
+}
+.btn-primary {
+  background-color: #1aa6b7 !important;
+  border-color: #1aa6b7 !important;
+  margin-left: 5px !important;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+label {
+  border-radius: 0.25rem !important;
+}
 .toast {
   margin: 5px;
 }
