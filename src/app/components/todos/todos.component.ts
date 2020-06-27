@@ -20,4 +20,14 @@ export class TodosComponent implements OnInit {
       this.user = user;
     });
   }
+  createNew(title: string, description: string) {
+    let newTodo: Todo = {
+      id: this.user.todos.length + 1,
+      title: title ? title : 'No Title',
+      description: description ? description : 'No description',
+      completed: false,
+    };
+    this.user.todos.push(newTodo);
+    this.todoService.patch(this.user).subscribe();
+  }
 }

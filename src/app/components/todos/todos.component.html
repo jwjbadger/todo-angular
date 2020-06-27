@@ -5,4 +5,22 @@
     [user]="user"
     [index]="todos.indexOf(todo)"
   ></app-todo>
+  <ngb-toast class="{{ 'incomplete' }}" [autohide]="false">
+    <input #title class="head" placeholder="Task Title" />
+    <hr />
+    <div class="creation">
+      <input #description class="description" placeholder="Task description" />
+      <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
+        <label ngbButtonLabel class="btn-primary">
+          <input
+            ngbButton
+            type="radio"
+            value="middle"
+            (click)="createNew(title.value, description.value)"
+          />
+          Add
+        </label>
+      </div>
+    </div>
+  </ngb-toast>
 </div>
