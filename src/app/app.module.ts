@@ -9,6 +9,7 @@ import { TodosComponent } from './components/todos/todos.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     TodoComponent,
     ContextMenuComponent,
     SidebarComponent,
+    HeaderComponent,
   ],
   imports: [NgbModule, BrowserModule, HttpClientModule],
   providers: [],

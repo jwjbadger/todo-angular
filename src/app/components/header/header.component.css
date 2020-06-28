@@ -1,0 +1,31 @@
+.bg-head {
+  margin-top: 1vh;
+  width: 90vw;
+  height: 4vh;
+  border-radius: 1rem;
+  background-color: #d9ecf2;
+  box-shadow: 3px 5px 8px #a6a6a6;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+label {
+  max-height: 30px;
+  max-width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px !important;
+  border-radius: 1rem !important;
+}
+.danger {
+  background-color: #ff414d !important;
+  color: #d9ecf2 !important;
+  border-width: 0px !important;
+}
+.sign {
+  background-color: #1aa6b7 !important;
+  color: #d9ecf2 !important;
+  border-width: 0px !important;
+}

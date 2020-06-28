@@ -1,4 +1,5 @@
 <div>
+  <app-header (emitDeleteAll)="deleteAll()"></app-header>
   <app-todo
     *ngFor="let todo of todos"
     [todo]="todo"

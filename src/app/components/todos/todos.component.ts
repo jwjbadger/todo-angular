@@ -16,7 +16,7 @@ export class TodosComponent implements OnInit {
 
   ngOnInit(): void {
     this.todoService.getTodos().subscribe((user) => {
-      this.todos = user.todos;
+      this.todos = user.todos ? user.todos : [];
       this.user = user;
     });
   }
@@ -31,6 +31,12 @@ export class TodosComponent implements OnInit {
     this.user.todos.sort(
       (a, b) => (a.completed ? 1 : 0) - (b.completed ? 1 : 0)
     );
+    this.todos = this.user.todos;
+    this.todoService.patch(this.user).subscribe();
+  }
+  deleteAll() {
+    this.todos = [];
+    this.user.todos = [];
     this.todoService.patch(this.user).subscribe();
   }
 }

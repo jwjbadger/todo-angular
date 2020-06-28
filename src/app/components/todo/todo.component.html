@@ -6,7 +6,7 @@
   <h5>
     <input
       #title
-      class="{{ todo.completed ? 'title complete' : 'title incomplete' }}"
+      class="{{ todo.completed ? 'complete title' : 'incomplete title' }}"
       [value]="todo.title"
       [disabled]="!inputEnabled"
     />
@@ -22,7 +22,13 @@
       [disabled]="!inputEnabled"
     />
     <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
-      <label *ngIf="inputEnabled" ngbButtonLabel class="btn-primary">
+      <label
+        *ngIf="inputEnabled"
+        ngbButtonLabel
+        [class]="
+          todo.completed ? 'btn-primary complete' : 'btn-primary incomplete'
+        "
+      >
         <input
           ngbButton
           type="radio"
