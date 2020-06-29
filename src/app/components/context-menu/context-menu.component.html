@@ -1,14 +1,5 @@
-<form
-  class="menu"
-  [ngStyle]="{ 'left.px': x, 'top.px': y }"
-  formGroup="radioGroupForm"
->
-  <div
-    class="btn-group btn-group-toggle"
-    ngbRadioGroup
-    name="radioBasic"
-    formControlName="model"
-  >
+<form class="menu" [ngStyle]="{ 'left.px': x, 'top.px': y }">
+  <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
     <label
       ngbButtonLabel
       [class]="complete ? 'btn-primary incomplete' : 'btn-primary complete'"

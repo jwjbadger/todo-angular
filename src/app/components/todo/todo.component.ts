@@ -1,7 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Todo } from '../../models/todo-item.model';
-import { User } from '../../models/user.model';
+import { Todo } from '../../store/models/todo-item.model';
+import { User } from '../../store/models/user.model';
 import { TodoService } from '../../services/todo-service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import {
+  ToggleComplete,
+  RemoveTask,
+  EditTask,
+} from 'src/app/store/actions/user.actions';
 
 @Component({
   selector: 'app-todo',
@@ -10,10 +17,15 @@ import { TodoService } from '../../services/todo-service';
 })
 export class TodoComponent implements OnInit {
   @Input() todo: Todo;
-  @Input() user: User;
-  @Input() index: number;
 
-  constructor(private todoService: TodoService) {}
+  user$: Observable<User>;
+  index: number;
+  user: User;
+
+  constructor(
+    private todoService: TodoService,
+    private store: Store<{ user: User }>
+  ) {}
 
   public isHidden: Boolean = true;
   xPosTabMenu: Number;
@@ -21,7 +33,13 @@ export class TodoComponent implements OnInit {
 
   inputEnabled: Boolean = false;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.user$ = this.store.select((state) => state.user);
+    this.user$.subscribe((store) => {
+      this.user = store;
+      this.index = this.user.todos ? this.user.todos.indexOf(this.todo) : -1;
+    });
+  }
 
   hideMenu() {
     this.isHidden = true;
@@ -31,18 +49,15 @@ export class TodoComponent implements OnInit {
     this.hideMenu();
     switch (event) {
       case 'toggleComplete':
-        let todos = this.user.todos;
-        todos[this.index].completed = !todos[this.index].completed;
-        todos.push(todos[this.index]);
-        todos.splice(this.index, 1);
-
+        this.store.dispatch(ToggleComplete({ payload: this.index }));
         this.todoService.patch(this.user).subscribe();
         break;
       case 'edit':
         this.inputEnabled = true;
         break;
       case 'delete':
-        this.user.todos.splice(this.index, 1);
+        console.log(this.index);
+        this.store.dispatch(RemoveTask({ payload: this.index }));
         this.todoService.patch(this.user).subscribe();
         break;
     }
@@ -50,8 +65,13 @@ export class TodoComponent implements OnInit {
 
   finishEdit(title: string, description: string) {
     this.inputEnabled = false;
-    this.user.todos[this.index].title = title;
-    this.user.todos[this.index].description = description;
+
+    this.store.dispatch(
+      EditTask({
+        payload: { title: title, description: description, index: this.index },
+      })
+    );
+
     this.todoService.patch(this.user).subscribe();
   }
 

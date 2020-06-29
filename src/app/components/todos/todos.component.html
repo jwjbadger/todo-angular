@@ -1,10 +1,8 @@
 <div>
   <app-header (emitDeleteAll)="deleteAll()"></app-header>
   <app-todo
-    *ngFor="let todo of todos"
+    *ngFor="let todo of (user$ | async)?.todos"
     [todo]="todo"
-    [user]="user"
-    [index]="todos.indexOf(todo)"
   ></app-todo>
   <ngb-toast class="{{ 'incomplete' }}" [autohide]="false">
     <h5><input #title class="head" placeholder="Task Title" /></h5>

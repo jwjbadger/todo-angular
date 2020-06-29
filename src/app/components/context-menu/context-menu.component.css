@@ -19,6 +19,7 @@ label {
   border-radius: 0.75rem !important;
   border: 0px;
   margin-top: 5px;
+  font-size: 13px;
 }
 .danger {
   /* background-color: #e96363; */

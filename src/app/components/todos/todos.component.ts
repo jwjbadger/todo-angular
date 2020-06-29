@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo } from '../../models/todo-item.model';
-import { User } from '../../models/user.model';
+import { User } from '../../store/models/user.model';
 import { TodoService } from '../../services/todo-service';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+
+import {
+  GetUser,
+  AddTask,
+  RemoveAll,
+} from 'src/app/store/actions/user.actions';
 
 @Component({
   selector: 'app-todos',
@@ -9,34 +16,34 @@ import { TodoService } from '../../services/todo-service';
   styleUrls: ['./todos.component.css'],
 })
 export class TodosComponent implements OnInit {
-  todos: Todo[];
+  user$: Observable<User>;
   user: User;
 
-  constructor(private todoService: TodoService) {}
-
-  ngOnInit(): void {
-    this.todoService.getTodos().subscribe((user) => {
-      this.todos = user.todos ? user.todos : [];
-      this.user = user;
-    });
+  constructor(
+    private todoService: TodoService,
+    private store: Store<{ user: User }>
+  ) {
+    this.todoService
+      .getTodos()
+      .toPromise()
+      .then((user) => {
+        this.store.dispatch(GetUser({ payload: user }));
+        this.user$ = this.store.select((state) => state.user);
+        this.user$.subscribe((store) => {
+          this.user = store;
+        });
+      });
   }
+
+  ngOnInit(): void {}
   createNew(title: string, description: string) {
-    let newTodo: Todo = {
-      id: this.user.todos.length + 1,
-      title: title ? title : 'No Title',
-      description: description ? description : 'No description',
-      completed: false,
-    };
-    this.user.todos.push(newTodo);
-    this.user.todos.sort(
-      (a, b) => (a.completed ? 1 : 0) - (b.completed ? 1 : 0)
+    this.store.dispatch(
+      AddTask({ payload: { title: title, description: description } })
     );
-    this.todos = this.user.todos;
     this.todoService.patch(this.user).subscribe();
   }
   deleteAll() {
-    this.todos = [];
-    this.user.todos = [];
+    this.store.dispatch(RemoveAll());
     this.todoService.patch(this.user).subscribe();
   }
 }

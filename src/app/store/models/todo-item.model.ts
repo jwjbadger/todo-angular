@@ -1,5 +1,4 @@
-export class Todo {
-  id: number;
+export interface Todo {
   title: string;
   description: string;
   completed: boolean;
