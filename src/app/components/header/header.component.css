@@ -11,7 +11,7 @@
   /* justify-content: center; */
 }
 label {
-  max-height: 30px;
+  height: 30px;
   max-width: 150px;
   display: flex;
   justify-content: center;
@@ -28,4 +28,28 @@ label {
   background-color: #1aa6b7 !important;
   color: #d9ecf2 !important;
   border-width: 0px !important;
+  height: 30px;
+  max-width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px !important;
+  border-radius: 1rem !important;
+}
+.sign-controlled {
+  background-color: #1aa6b7 !important;
+  color: #d9ecf2 !important;
+  border-width: 0px !important;
+  height: 30px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px !important;
+  border-radius: 1rem !important;
+}
+.group {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
 }

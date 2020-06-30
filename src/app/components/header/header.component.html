@@ -3,8 +3,35 @@
     <label ngbButtonLabel class="danger btn-primary">
       <input ngbButton type="radio" (click)="deleteAll()" /> Delete All
     </label>
-    <label ngbButtonLabel class="sign btn-primary">
-      <input ngbButton type="radio" /> Sign In
-    </label>
+  </div>
+  <div ngbDropdown class="d-inline-block">
+    <button class="sign btn-primary" ngbDropdownToggle>
+      Sign In | Sign Up
+    </button>
+    <div ngbDropdownMenu>
+      <div class="group">
+        <input #name type="text" class="form-control" placeholder="Username" />
+      </div>
+      <div class="group">
+        <input
+          #pass
+          type="password"
+          class="form-control"
+          placeholder="Password"
+        />
+      </div>
+      <button
+        (click)="login(name.value, pass.value)"
+        class="sign-controlled btn btn-primary"
+      >
+        Sign in
+      </button>
+      <button
+        (click)="register(name.value, pass.value)"
+        class="sign-controlled btn btn-primary"
+      >
+        Sign up
+      </button>
+    </div>
   </div>
 </div>
