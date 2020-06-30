@@ -47,7 +47,7 @@ const UserReducer = createReducer(
     return newUser;
   }),
 
-  on(UserActions.RemoveAll, (state) => ({}))
+  on(UserActions.RemoveAll, (state) => ({ ...state, todos: [] }))
 );
 
 export function reducer(state: User = initialState, action: Action) {

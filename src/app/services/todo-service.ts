@@ -11,7 +11,7 @@ let httpOptions = {
     'Access-Control-Allow-Headers': 'auth-token',
     'auth-token': localStorage.getItem('JWT')
       ? localStorage.getItem('JWT')
-      : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWY4ZjFhZjdiMWEyNDE4NzgzNDVhNTgiLCJpYXQiOjE1OTM0NDAzNDh9.-7nymfTY0kHOcBUwuoJHnweb4-v46h6ee1HCMO4bzCs',
+      : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWZiMzNhY2M4ZDdkZTM2MWM5NzMzMTAiLCJpYXQiOjE1OTM1MjEyMTJ9.koQFvcuhPYWcbnWkQiHvBwgNz-dgQukUGUONv2XMNiw',
   }),
 };
 
@@ -28,7 +28,7 @@ export class TodoService {
         'users/' +
         (localStorage.getItem('id')
           ? localStorage.getItem('id')
-          : '5ef8f1af7b1a241878345a58'),
+          : '5efb33acc8d7de361c973310'),
       httpOptions
     );
   }
@@ -38,35 +38,48 @@ export class TodoService {
         'users/' +
         (localStorage.getItem('id')
           ? localStorage.getItem('id')
-          : '5ef8f1af7b1a241878345a58'),
+          : '5efb33acc8d7de361c973310'),
       { todos: user.todos },
       httpOptions
     );
   }
 
-  login(name: string, pass: string) {
-    this.http
+  async login(name: string, pass: string): Promise<any> {
+    return this.http
       .post(
         this.ROOT_URL + 'users/login',
         { name: name, password: pass },
         httpOptions
       )
       .toPromise()
-      .then((data: any) => {
-        localStorage.setItem('JWT', data.token);
-        localStorage.setItem('id', jwt_decode(data.token)._id);
-      });
+      .then(
+        (data: any) => {
+          localStorage.setItem('JWT', data.token);
+          localStorage.setItem('id', jwt_decode(data.token)._id);
+          return { state: 'Success' };
+        },
+        (err) => {
+          return err;
+        }
+      );
   }
-  register(name: string, pass: string) {
-    this.http
+  async register(name: string, pass: string): Promise<any> {
+    return this.http
       .post(
         this.ROOT_URL + 'users/register',
         { name: name, password: pass },
         httpOptions
       )
       .toPromise()
-      .then(() => {
-        this.login(name, pass);
-      });
+      .then(
+        (data) => {
+          return this.login(name, pass).then((data) => {
+            return { stat: 'Success', loginStat: data };
+          });
+        },
+        (err) => {
+          return err;
+        }
+      );
   }
 }
