@@ -4,7 +4,7 @@
       <input ngbButton type="radio" (click)="deleteAll()" /> Delete All
     </label>
   </div>
-  <div ngbDropdown class="d-inline-block">
+  <div #loginForm="ngbDropdown" ngbDropdown class="d-inline-block">
     <button class="sign btn-primary" ngbDropdownToggle>
       Sign In | Sign Up
     </button>
@@ -28,14 +28,14 @@
       </div>
       <button
         type="submit"
-        (click)="login(name.value, pass.value)"
+        (click)="login(name.value, pass.value); loginForm.close()"
         class="sign-controlled btn btn-primary"
       >
         Sign in
       </button>
       <button
         type="submit"
-        (click)="register(name.value, pass.value)"
+        (click)="register(name.value, pass.value); loginForm.close()"
         class="sign-controlled btn btn-primary"
       >
         Sign up

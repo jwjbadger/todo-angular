@@ -67,7 +67,7 @@ export class TodoService {
     return this.http
       .post(
         this.ROOT_URL + 'users/register',
-        { name: name, password: pass },
+        { name: name, password: pass, todos: [] },
         httpOptions
       )
       .toPromise()

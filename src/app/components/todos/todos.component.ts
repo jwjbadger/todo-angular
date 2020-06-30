@@ -9,6 +9,7 @@ import {
   AddTask,
   RemoveAll,
 } from 'src/app/store/actions/user.actions';
+import { ToastService } from 'src/app/services/ToastService.service';
 
 @Component({
   selector: 'app-todos',
@@ -21,7 +22,8 @@ export class TodosComponent implements OnInit {
 
   constructor(
     private todoService: TodoService,
-    private store: Store<{ user: User }>
+    private store: Store<{ user: User }>,
+    private toastService: ToastService
   ) {
     this.todoService
       .getTodos()
@@ -41,9 +43,21 @@ export class TodosComponent implements OnInit {
       AddTask({ payload: { title: title, description: description } })
     );
     this.todoService.patch(this.user).subscribe();
+
+    this.toastService.show(
+      'Making a list is the first step',
+      'Now get to work!',
+      'success'
+    );
   }
   deleteAll() {
     this.store.dispatch(RemoveAll());
     this.todoService.patch(this.user).subscribe();
+
+    this.toastService.show(
+      'Everythings gone....',
+      "But I guess that's a good thing...",
+      'success'
+    );
   }
 }
