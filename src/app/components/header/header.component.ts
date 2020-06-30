@@ -4,6 +4,8 @@ import { Store } from '@ngrx/store';
 import { User } from 'src/app/store/models/user.model';
 import { GetUser } from 'src/app/store/actions/user.actions';
 
+import { ToastService } from '../../services/ToastService.service';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -15,7 +17,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private todoService: TodoService,
-    private store: Store<{ user: User }>
+    private store: Store<{ user: User }>,
+    private toastService: ToastService
   ) {}
 
   ngOnInit(): void {}
@@ -25,22 +28,40 @@ export class HeaderComponent implements OnInit {
   }
   login(name: string, pass: string) {
     this.todoService.login(name, pass).then((data) => {
-      this.todoService
-        .getTodos()
-        .toPromise()
-        .then((user) => {
-          this.store.dispatch(GetUser({ payload: user }));
-        });
+      if (data.state == 'Success') {
+        this.toastService.show(
+          'Success, logged in!',
+          'Now make some todos...',
+          'success'
+        );
+        this.todoService
+          .getTodos()
+          .toPromise()
+          .then((user) => {
+            this.store.dispatch(GetUser({ payload: user }));
+          });
+      } else {
+        this.toastService.show(data.error.err, 'Sorry about that...', 'danger');
+      }
     });
   }
   register(name: string, pass: string) {
     this.todoService.register(name, pass).then((data) => {
-      this.todoService
-        .getTodos()
-        .toPromise()
-        .then((user) => {
-          this.store.dispatch(GetUser({ payload: user }));
-        });
+      if (data.stat == 'Success') {
+        this.toastService.show(
+          'Success, logged in!',
+          'Now make some todos...',
+          'success'
+        );
+        this.todoService
+          .getTodos()
+          .toPromise()
+          .then((user) => {
+            this.store.dispatch(GetUser({ payload: user }));
+          });
+      } else {
+        this.toastService.show(data.error.err, 'Sorry about that...', 'danger');
+      }
     });
   }
 }

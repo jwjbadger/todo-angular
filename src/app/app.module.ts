@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+import { ToastComponent } from './components/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { EffectsModule } from '@ngrx/effects';
     ContextMenuComponent,
     SidebarComponent,
     HeaderComponent,
+    ToastComponent,
   ],
   imports: [
     NgbModule,
