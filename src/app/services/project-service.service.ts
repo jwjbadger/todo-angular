@@ -17,7 +17,7 @@ let httpOptions = {
 @Injectable({
   providedIn: 'root',
 })
-export class ProjectServiceService {
+export class ProjectService {
   readonly ROOT_URL = 'http://127.0.0.1:3000/';
 
   constructor(private http: HttpClient) {}

@@ -5,7 +5,7 @@ const clone = require('rfdc')();
 
 let initialState: User = undefined;
 
-const UserReducer = createReducer(
+const UserReducerHandler = createReducer(
   initialState,
 
   on(UserActions.GetUser, (state, { payload }) => payload),
@@ -29,11 +29,13 @@ const UserReducer = createReducer(
 
   on(UserActions.AddTask, (state, { payload }) => {
     let newUser: User = clone(state);
+
     newUser.todos.push({
       title: payload.title ? payload.title : 'No Title',
       description: payload.description ? payload.description : 'No description',
       completed: false,
     });
+    newUser.todos.sort((a, b) => (a.completed ? 1 : 0) - (b.completed ? 1 : 0));
 
     return newUser;
   }),
@@ -42,7 +44,6 @@ const UserReducer = createReducer(
     let newUser: User = clone(state);
 
     newUser.todos.splice(payload, 1);
-    console.log(newUser);
 
     return newUser;
   }),
@@ -50,6 +51,6 @@ const UserReducer = createReducer(
   on(UserActions.RemoveAll, (state) => ({ ...state, todos: [] }))
 );
 
-export function reducer(state: User = initialState, action: Action) {
-  return UserReducer(state, action);
+export function UserReducer(state: User = initialState, action: Action) {
+  return UserReducerHandler(state, action);
 }

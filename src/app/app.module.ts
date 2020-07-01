@@ -12,12 +12,15 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { StoreModule } from '@ngrx/store';
 
-import { reducer } from './store/reducers/user.reducer';
+import { UserReducer } from './store/reducers/user.reducer';
+import { ProjectsReducer } from './store/reducers/projects.reducer';
 import { FormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { ToastComponent } from './components/toast/toast.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { ProjectComponent } from './components/project/project.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +31,15 @@ import { ToastComponent } from './components/toast/toast.component';
     SidebarComponent,
     HeaderComponent,
     ToastComponent,
+    ProjectsComponent,
+    ProjectComponent,
   ],
   imports: [
     NgbModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    StoreModule.forRoot({ user: reducer }, {}),
+    StoreModule.forRoot({ user: UserReducer, projects: ProjectsReducer }, {}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
