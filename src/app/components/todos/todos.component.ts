@@ -9,7 +9,7 @@ import {
   AddTask,
   RemoveAll,
 } from 'src/app/store/actions/user.actions';
-import { ToastService } from 'src/app/services/ToastService.service';
+import { ToastService } from 'src/app/services/todo-service.service';
 
 @Component({
   selector: 'app-todos',

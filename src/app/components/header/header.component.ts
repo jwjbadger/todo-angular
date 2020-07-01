@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { User } from 'src/app/store/models/user.model';
 import { GetUser } from 'src/app/store/actions/user.actions';
 
-import { ToastService } from '../../services/ToastService.service';
+import { ToastService } from '../../services/todo-service.service';
 
 @Component({
   selector: 'app-header',
