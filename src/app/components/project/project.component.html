@@ -23,6 +23,12 @@
     >
       {{ todo.completed ? "Finish" : "Re-Open" }}
     </button>
+    <button
+      class="btn-primary"
+      (click)="deleteTask(project.todos.indexOf(todo))"
+    >
+      Delete
+    </button>
   </div>
   <div class="todo">
     <input #title placeholder="Title" class="title" />

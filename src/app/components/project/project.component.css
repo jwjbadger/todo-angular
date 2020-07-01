@@ -1,6 +1,6 @@
 ngb-toast {
   background-color: #002d40;
-  max-width: 500px;
+  max-width: 600px;
 }
 input {
   border-width: 0px;
@@ -20,6 +20,9 @@ input.complete {
 }
 input.incomplete {
   color: #f78893 !important;
+}
+button.incomplete {
+  color: #1aa6b7 !important;
 }
 .title {
   font-weight: bold;

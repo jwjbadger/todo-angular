@@ -23,6 +23,9 @@ const ProjectsReducerHandler = createReducer(
       payload.taskIndex
     ].completed = !newProjects[payload.projectIndex].todos[payload.taskIndex]
       .completed;
+    newProjects[payload.projectIndex].todos.sort(
+      (a, b) => (a.completed ? 1 : 0) - (b.completed ? 1 : 0)
+    );
 
     return newProjects;
   }),

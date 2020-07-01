@@ -7,6 +7,7 @@ import {
   AddTask,
   RemoveProject,
   ToggleComplete,
+  RemoveTask,
 } from 'src/app/store/actions/projects.actions';
 import { Observable } from 'rxjs';
 
@@ -58,6 +59,12 @@ export class ProjectComponent implements OnInit {
       ToggleComplete({
         payload: { projectIndex: this.index, taskIndex: index },
       })
+    );
+  }
+
+  deleteTask(index: number) {
+    this.store.dispatch(
+      RemoveTask({ payload: { projectIndex: this.index, taskIndex: index } })
     );
   }
 }
