@@ -25,16 +25,10 @@ export class TodosComponent implements OnInit {
     private store: Store<{ user: User }>,
     private toastService: ToastService
   ) {
-    this.todoService
-      .getTodos()
-      .toPromise()
-      .then((user) => {
-        this.store.dispatch(GetUser({ payload: user }));
-        this.user$ = this.store.select((state) => state.user);
-        this.user$.subscribe((store) => {
-          this.user = store;
-        });
-      });
+    this.user$ = this.store.select((state) => state.user);
+    this.user$.subscribe((store) => {
+      this.user = store;
+    });
   }
 
   ngOnInit(): void {}

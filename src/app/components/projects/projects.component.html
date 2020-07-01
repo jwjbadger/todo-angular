@@ -1,1 +1,6 @@
-<app-todo *ngFor="let project of projects$ | async"></app-todo>
+<div *ngIf="projects">
+  <app-project
+    *ngFor="let project of projects"
+    [project]="project"
+  ></app-project>
+</div>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Project } from '../store/models/project.model';
 import { UserActionTypes } from '../store/actions/user.actions';
+import { Observable } from 'rxjs';
 
 let httpOptions = {
   headers: new HttpHeaders({
@@ -22,8 +23,11 @@ export class ProjectService {
 
   constructor(private http: HttpClient) {}
 
-  getProjects(_id: string) {
-    return this.http.get(this.ROOT_URL + 'projects/' + _id, httpOptions);
+  getProjects(username: string): Observable<Project[]> {
+    return this.http.get<Project[]>(
+      this.ROOT_URL + 'projects/' + username,
+      httpOptions
+    );
   }
   postProject(project: Project) {
     return this.http.post(this.ROOT_URL + 'projects/', project, httpOptions);

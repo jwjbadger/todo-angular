@@ -1,0 +1,25 @@
+ngb-toast {
+  background-color: #002d40;
+  max-width: 500px;
+}
+input {
+  border-width: 0px;
+  border-radius: 1rem;
+  padding-left: 7px;
+  color: #1aa6b7 !important;
+}
+input:disabled {
+  background-color: #002d40;
+}
+input:enabled {
+  background-color: #004766;
+}
+.title {
+  font-weight: bold;
+}
+.description {
+  font-style: italic;
+}
+.todo {
+  display: flex;
+}
