@@ -3,7 +3,11 @@ import { Project } from 'src/app/store/models/project.model';
 import { Store } from '@ngrx/store';
 import { User } from 'src/app/store/models/user.model';
 import { ProjectService } from 'src/app/services/project-service.service';
-import { AddTask, RemoveProject } from 'src/app/store/actions/projects.actions';
+import {
+  AddTask,
+  RemoveProject,
+  ToggleComplete,
+} from 'src/app/store/actions/projects.actions';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -45,6 +49,14 @@ export class ProjectComponent implements OnInit {
           description: description,
           projectIndex: this.index,
         },
+      })
+    );
+  }
+
+  toggleComplete(index: number) {
+    this.store.dispatch(
+      ToggleComplete({
+        payload: { projectIndex: this.index, taskIndex: index },
       })
     );
   }

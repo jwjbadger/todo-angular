@@ -6,14 +6,20 @@ input {
   border-width: 0px;
   border-radius: 1rem;
   padding-left: 7px;
-  color: #1aa6b7 !important;
   margin-left: 5px;
+  color: #1aa6b7 !important;
 }
 input:disabled {
   background-color: #002d40;
 }
 input:enabled {
   background-color: #004766;
+}
+input.complete {
+  color: #1aa6b7 !important;
+}
+input.incomplete {
+  color: #f78893 !important;
 }
 .title {
   font-weight: bold;
