@@ -5,4 +5,14 @@
     <input [disabled]="true" [value]="todo.title" class="title" />
     <input [disabled]="true" [value]="todo.description" class="description" />
   </div>
+  <div class="todo">
+    <input #title placeholder="Title" class="title" />
+    <input #description placeholder="Description" class="description" />
+    <button
+      class="btn-primary"
+      (click)="createNew(title.value, description.value)"
+    >
+      Submit
+    </button>
+  </div>
 </ngb-toast>
