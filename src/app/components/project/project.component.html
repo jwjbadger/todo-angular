@@ -1,5 +1,10 @@
-<ngb-toast
-  ><h5><input class="title" [value]="project.title" [disabled]="true" /></h5>
+<ngb-toast>
+  <div class="head">
+    <h5><input class="title" [value]="project.title" [disabled]="true" /></h5>
+    <button class="btn-primary" (click)="deleteProject()">
+      Delete
+    </button>
+  </div>
   <input class="description" [value]="project.description" [disabled]="true" />
   <div *ngFor="let todo of project.todos" class="todo">
     <input [disabled]="true" [value]="todo.title" class="title" />

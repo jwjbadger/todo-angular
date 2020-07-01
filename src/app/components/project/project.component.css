@@ -24,6 +24,9 @@ input:enabled {
 .todo {
   display: flex;
 }
+.head {
+  display: flex;
+}
 .btn-primary {
   background-color: #1aa6b7 !important;
   color: #d9ecf2 !important;

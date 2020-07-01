@@ -3,7 +3,7 @@ import { Project } from 'src/app/store/models/project.model';
 import { Store } from '@ngrx/store';
 import { User } from 'src/app/store/models/user.model';
 import { ProjectService } from 'src/app/services/project-service.service';
-import { AddTask } from 'src/app/store/actions/projects.actions';
+import { AddTask, RemoveProject } from 'src/app/store/actions/projects.actions';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -31,6 +31,12 @@ export class ProjectComponent implements OnInit {
       this.projectService.putProject(this.project).toPromise();
     });
   }
+
+  deleteProject() {
+    this.projectService.deleteProject(this.project._id).toPromise();
+    this.store.dispatch(RemoveProject({ payload: this.index }));
+  }
+
   createNew(title: string, description: string) {
     this.store.dispatch(
       AddTask({
