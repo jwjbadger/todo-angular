@@ -4,7 +4,10 @@ import { Store } from '@ngrx/store';
 import { Project } from 'src/app/store/models/project.model';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/store/models/user.model';
-import { GetProjects } from 'src/app/store/actions/projects.actions';
+import {
+  GetProjects,
+  AddProject,
+} from 'src/app/store/actions/projects.actions';
 
 @Component({
   selector: 'app-projects',
@@ -39,4 +42,25 @@ export class ProjectsComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  createProject(title: string, description: string, usernames: Array<string>) {
+    usernames = usernames.filter(function (e) {
+      return e;
+    });
+
+    const newProject = {
+      _id: null,
+      title: title ? title : 'No title',
+      description: description ? description : 'No description',
+      users: usernames,
+      todos: [],
+    };
+
+    this.store.dispatch(
+      AddProject({
+        payload: newProject,
+      })
+    );
+    this.projectService.postProject(newProject).toPromise();
+  }
 }
