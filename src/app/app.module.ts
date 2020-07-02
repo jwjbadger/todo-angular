@@ -21,6 +21,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ToastComponent } from './components/toast/toast.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ProjectComponent } from './components/project/project.component';
+import { SettingsComponent } from './components/settings-component/settings.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ProjectComponent } from './components/project/project.component';
     ToastComponent,
     ProjectsComponent,
     ProjectComponent,
+    SettingsComponent,
   ],
   imports: [
     NgbModule,

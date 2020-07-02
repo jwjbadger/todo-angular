@@ -1,6 +1,7 @@
 ngb-toast {
   background-color: #002d40;
   max-width: 500px;
+  margin: 5px;
 }
 input {
   border-width: 0px;
@@ -30,4 +31,9 @@ input {
   align-items: center;
   margin-top: 5px !important;
   border-radius: 1rem !important;
+}
+.back {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
 }

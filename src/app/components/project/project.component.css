@@ -1,6 +1,7 @@
 ngb-toast {
   background-color: #002d40;
   max-width: 600px;
+  margin: 5px;
 }
 input {
   border-width: 0px;

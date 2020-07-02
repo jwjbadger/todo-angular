@@ -1,24 +1,28 @@
-<div *ngIf="projects">
+<div *ngIf="projects" class="back">
   <app-project
     *ngFor="let project of projects"
     [project]="project"
   ></app-project>
+  <ngb-toast
+    ><h5><input #title class="title" placeholder="Project Title" /></h5>
+    <input #description class="description" placeholder="Project Description" />
+    <input
+      #usernames
+      class="description"
+      placeholder="usernames"
+      [value]="user.name + ' '"
+    />
+    <button
+      class="btn-primary"
+      (click)="
+        createProject(
+          title.value,
+          description.value,
+          usernames.value.split(' ')
+        )
+      "
+    >
+      Create Project
+    </button>
+  </ngb-toast>
 </div>
-<ngb-toast
-  ><h5><input #title class="title" placeholder="Project Title" /></h5>
-  <input #description class="description" placeholder="Project Description" />
-  <input
-    #usernames
-    class="description"
-    placeholder="usernames"
-    [value]="user.name + ' '"
-  />
-  <button
-    class="btn-primary"
-    (click)="
-      createProject(title.value, description.value, usernames.value.split(' '))
-    "
-  >
-    Create Project
-  </button>
-</ngb-toast>

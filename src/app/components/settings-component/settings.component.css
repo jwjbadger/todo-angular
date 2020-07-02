@@ -1,0 +1,20 @@
+.back {
+  border-radius: 1rem;
+  background-color: #d9ecf2;
+  box-shadow: 5px 8px 25px #595959;
+  width: 91.5vw;
+  height: 95vh;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+}
+h1 {
+  color: #002d40;
+  margin-left: 0.5vw;
+}
+hr {
+  color: #002d40;
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+}
