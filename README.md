@@ -4,8 +4,8 @@ This project is built to go along with [todo-backend](https://github.com/jwjbadg
 
 ## What I Learned
 
-I learned so much about a MEAN stack and linking together the backend and frontend of a project. I learned about how to setup and design databases, create APIs, and create nice looking frontend applications. This project also gave me more insight into to process of creating projects.
+From this branch, I learned how to integrate Electron into existing apps, use electron with angular, electron, and more about package.json.
 
 ## Running
 
-In order to run this project, you have to download the [todo-backend](https://github.com/jwjbadger/todo-backend/) project, then install dependencies with `npm install -y`, then run with `npm start`, make sure you have MongoDB installed. Then, move to this project and run `npm install -y`, then `ng serve`. If no problems arise, you should have this project running on http://localhost:4200. Hopefully, in the future, I will move this to an Electron app with the backend already running. Note: I can't put this on Github Pages as that would require a server to host the backend.
+In order to run this project, you have to download the [todo-backend](https://github.com/jwjbadger/todo-backend/) project, then install dependencies with `npm install -y`, then run with `npm start`, make sure you have MongoDB installed. Then, move to this project and run `npm run electron-build`, after a bit, this should open a new window. After you have run this command, you can run the program (without packaging) with `npm run electron`. Also, you could use `npm i electron-packager -g`, then `electron-packager .` to get a binary for your OS.
